@@ -1,0 +1,232 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f3f4;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Browser Chrome */
+.browser-chrome {
+    background: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Navigation Bar */
+.nav-bar {
+    background: white;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #dadce0;
+}
+
+.nav-button {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #5f6368;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-button:hover {
+    background: #f1f3f4;
+    border-radius: 4px;
+}
+
+.address-bar {
+    flex: 1;
+    background: #f1f3f4;
+    border: 2px solid transparent;
+    border-radius: 24px;
+    padding: 8px 16px;
+    margin: 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    color: #202124;
+}
+
+.address-bar:hover {
+    background: white;
+    border-color: #dadce0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.address-bar:focus-within {
+    background: white;
+    border-color: #1a73e8;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.google-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.bookmarks-text {
+    font-size: 12px;
+    color: #5f6368;
+    margin-top: 4px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Top Right Links */
+.top-links {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.top-link {
+    color: #5f6368;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.top-link:hover {
+    text-decoration: underline;
+}
+
+.apps-icon {
+    width: 20px;
+    height: 20px;
+    color: #5f6368;
+    cursor: pointer;
+}
+
+.login-button {
+    background: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.login-button:hover {
+    background: #1557b0;
+}
+
+/* Google Logo */
+.google-logo {
+    font-size: 90px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    letter-spacing: -4px;
+}
+
+.google-logo .g { color: #4285f4; }
+.google-logo .o1 { color: #ea4335; }
+.google-logo .o2 { color: #fbbc05; }
+.google-logo .g2 { color: #4285f4; }
+.google-logo .l { color: #34a853; }
+.google-logo .e { color: #ea4335; }
+
+/* Search Bar */
+.search-container {
+    width: 100%;
+    max-width: 584px;
+    margin-bottom: 30px;
+}
+
+.search-bar {
+    width: 100%;
+    height: 44px;
+    border: 1px solid #dfe1e5;
+    border-radius: 24px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.search-bar:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.search-bar:focus-within {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border-color: transparent;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    color: #9aa0a6;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #202124;
+}
+
+.search-input::placeholder {
+    color: #9aa0a6;
+}
+
+.mic-icon, .lens-icon {
+    width: 20px;
+    height: 20px;
+    color: #9aa0a6;
+    cursor: pointer;
+}
+
+.mic-icon:hover, .lens-icon:hover {
+    color: #5f6368;
+}
+
+
+/* Bottom Right Button */
+.customize-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: #f8f9fa;
+    border: 1px solid #dadce0;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #5f6368;
+    cursor: pointer;
+}
+
+.customize-button:hover {
+    background: #f1f3f4;
+}

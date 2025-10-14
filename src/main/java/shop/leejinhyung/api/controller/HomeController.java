@@ -12,13 +12,13 @@ public class HomeController {
     }
 
 
-    @GetMapping("/auth/login")
-    public String loginPage() {
+    @GetMapping("/auth/login.html")
+    public String loginHtml() {
         return "auth/login";
     }
 
-    @GetMapping("/auth/register")
-    public String registerPage() {
+    @GetMapping("/auth/register.html")
+    public String registerHtml() {
         return "auth/register";
     }
 

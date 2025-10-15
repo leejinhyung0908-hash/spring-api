@@ -1,4 +1,4 @@
-package shop.leejinhyung.api.controller;
+package shop.leejinhyung.api;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,22 +24,22 @@ public class HomeController {
 
     @GetMapping("/calculator/plus")
     public String calculatorPlusPage() {
-        return "contents/calculator/plus";
+        return "/calculator/plus";
     }
 
     @GetMapping("/calculator/minus")
     public String calculatorMinusPage() {
-        return "contents/calculator/minus";
+        return "/calculator/minus";
     }
 
     @GetMapping("/calculator/gob")
     public String calculatorGobPage() {
-        return "contents/calculator/gob";
+        return "/calculator/gob";
     }
 
     @GetMapping("/calculator/nanum")
     public String calculatorNanumPage() {
-        return "contents/calculator/nanum";
+        return "/calculator/nanum";
     }
 
 }

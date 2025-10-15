@@ -6,6 +6,34 @@
 <title>계산기 - Creative Hub</title>
 </head>
 <body>
+    <div class="plus-container">
+        <h1 class="plus-title">덧셈</h1>
+        <form method="get" action="/plus">
+            <div class="form-group">
+                <label for="p1" class="form-label">값1</label>
+                <input 
+                    type="int" 
+                    id="p1"
+                    name="p1" 
+                    class="form-input" 
+                    placeholder="값1을 입력하세요" value="1"
+                >
+            </div>
+            
+            <div class="form-group">
+                <label for="p2" class="form-label">값2</label>
+                <input 
+                    type="int" 
+                    id="p2"
+                    name="p2" 
+                    class="form-input" 
+                    placeholder="값2를 입력하세요" required value="2"
+                >
+            </div>
+            
+            <button type="submit" class="plus-btn">계산</button>
+        </form>
+    </div>
 <a href="/" class="back-link">
 ← 홈으로 돌아가기
 </a>

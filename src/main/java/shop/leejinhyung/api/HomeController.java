@@ -41,5 +41,9 @@ public class HomeController {
     public String calculatorNanumPage() {
         return "/calculator/nanum";
     }
+    @GetMapping("/calculator/calculator")
+    public String calculatorCalculatorPage() {
+        return "/calculator/calculator";
+    }
 
 }

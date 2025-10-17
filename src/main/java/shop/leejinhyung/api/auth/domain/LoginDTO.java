@@ -2,9 +2,11 @@ package shop.leejinhyung.api.auth.domain;
 
 public class LoginDTO {
    
-    private String userId;
-    private String password;
     
+    
+    public LoginDTO(){}
+
+
     // Getter and Setter for userId
     public String getUserId() {
         return userId;
@@ -22,4 +24,8 @@ public class LoginDTO {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    private String userId;
+    private String password;
 }
+

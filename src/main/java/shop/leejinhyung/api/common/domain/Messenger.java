@@ -22,8 +22,6 @@ public class Messenger {
         this.message = message;
     }
 
-    Messenger messenger = new Messenger();
-    messenger.setCode(code);
-    messenger.setMessage("message");
+  
 
 }

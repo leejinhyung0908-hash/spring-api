@@ -39,34 +39,6 @@
             font-weight: 300;
         }
 
-        .operation-selector {
-            margin-bottom: 30px;
-        }
-
-        .operation-select {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            background: white;
-            color: #666;
-            font-size: 1.1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            outline: none;
-        }
-
-        .operation-select:hover {
-            border-color: #667eea;
-            color: #667eea;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
-        }
-
-        .operation-select:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
 
         .form-container {
             background: #f8f9fa;
@@ -195,17 +167,18 @@
     <div class="calculator-container">
         <h1 class="calculator-title">계산기</h1>
 
-        <div class="operation-selector">
-            <select class="operation-select" id="operationSelect" name="operation">
-                <option value="plus" th:selected="${operation == 'plus'}">+ 덧셈</option>
-                <option value="minus" th:selected="${operation == 'minus'}">- 뺄셈</option>
-                <option value="gob" th:selected="${operation == 'gob'}">× 곱셈</option>
-                <option value="nanum" th:selected="${operation == 'nanum'}">÷ 나눗셈</option>
-            </select>
-        </div>
-
         <!-- 통합 계산기 폼 -->
         <form id="calculator-form" class="form-container" method="get" action="/calculator">
+            <div class="form-group">
+                <label for="operation" class="form-label">연산 선택</label>
+                <select class="form-input" id="operation" name="operation">
+                    <option value="plus" th:selected="${operation == 'plus'}">+ 덧셈</option>
+                    <option value="minus" th:selected="${operation == 'minus'}">- 뺄셈</option>
+                    <option value="gob" th:selected="${operation == 'gob'}">× 곱셈</option>
+                    <option value="nanum" th:selected="${operation == 'nanum'}">÷ 나눗셈</option>
+                </select>
+            </div>
+
             <div class="form-group">
                 <label for="num1" class="form-label">첫 번째 숫자</label>
                 <input type="number" id="num1" name="num1" class="form-input" placeholder="숫자를 입력하세요"

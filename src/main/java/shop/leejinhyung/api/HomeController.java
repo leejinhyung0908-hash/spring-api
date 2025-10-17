@@ -12,7 +12,7 @@ public class HomeController {
     }
 
 
-    @GetMapping("/auth/login.html")
+    @GetMapping("/auth/login.go")
     public String loginHtml() {
         return "auth/login";
     }
@@ -22,25 +22,6 @@ public class HomeController {
         return "auth/register";
     }
 
-    @GetMapping("/calculator/plus")
-    public String calculatorPlusPage() {
-        return "/calculator/plus";
-    }
-
-    @GetMapping("/calculator/minus")
-    public String calculatorMinusPage() {
-        return "/calculator/minus";
-    }
-
-    @GetMapping("/calculator/gob")
-    public String calculatorGobPage() {
-        return "/calculator/gob";
-    }
-
-    @GetMapping("/calculator/nanum")
-    public String calculatorNanumPage() {
-        return "/calculator/nanum";
-    }
     @GetMapping("/calculator/calculator")
     public String calculatorCalculatorPage() {
         return "/calculator/calculator";

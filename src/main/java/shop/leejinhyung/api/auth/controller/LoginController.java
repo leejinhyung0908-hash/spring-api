@@ -18,6 +18,7 @@ public class LoginController {
         this.loginService = loginService;
     }
 
+
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String userId,
             @RequestParam(required = false) String password, Model model) {

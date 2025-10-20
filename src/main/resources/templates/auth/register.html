@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
     <style>
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, 'Noto Sans KR', sans-serif;
@@ -17,29 +21,47 @@
             justify-content: center;
             padding: 24px;
         }
+
         .card {
             width: 100%;
             max-width: 520px;
             background: #fff;
             border: 1px solid #eaecef;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
             padding: 28px;
         }
+
         .title {
             margin: 0 0 6px 0;
             font-size: 22px;
             font-weight: 700;
         }
+
         .subtitle {
             margin: 0 0 20px 0;
             color: #666;
             font-size: 14px;
         }
-        .row { display: grid; grid-template-columns: 1fr; gap: 14px; }
-        .field { display: grid; gap: 8px; }
-        label { font-size: 13px; color: #444; }
-        input, select {
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        .field {
+            display: grid;
+            gap: 8px;
+        }
+
+        label {
+            font-size: 13px;
+            color: #444;
+        }
+
+        input,
+        select {
             height: 44px;
             padding: 0 12px;
             border: 1px solid #dcdfe3;
@@ -47,21 +69,68 @@
             font-size: 15px;
             outline: none;
         }
-        input:focus, select:focus { border-color: #4f7cff; box-shadow: 0 0 0 3px rgba(79,124,255,0.12); }
-        .inline { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .hint { font-size: 12px; color: #888; }
-        .actions { margin-top: 10px; display: grid; gap: 10px; }
-        .btn-primary {
-            height: 46px; border: 0; border-radius: 8px;
-            background: #111; color: #fff; font-size: 15px; cursor: pointer;
+
+        input:focus,
+        select:focus {
+            border-color: #4f7cff;
+            box-shadow: 0 0 0 3px rgba(79, 124, 255, 0.12);
         }
-        .btn-primary:hover { background: #000; }
-        .muted { text-align: center; color: #666; font-size: 14px; }
-        .muted a { color: #4f7cff; text-decoration: none; }
-        @media (max-width: 480px) { .inline { grid-template-columns: 1fr; } }
+
+        .inline {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .hint {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .actions {
+            margin-top: 10px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            height: 46px;
+            border: 0;
+            border-radius: 8px;
+            background: #111;
+            color: #fff;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+        }
+
+        .muted {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .muted a {
+            color: #4f7cff;
+            text-decoration: none;
+        }
+
+        @media (max-width: 480px) {
+            .inline {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
+
 <body>
+    <div th:if="${messenger != null}" th:object="${messenger}">
+        <p>code: <span th:text="*{code}">CODE</span></p>
+        <p>message: <span th:text="*{message}">MESSAGE</span></p>
+    </div>
     <main class="card">
         <h1 class="title">회원가입</h1>
         <p class="subtitle">아래 정보를 입력하면 계정을 만들 수 있어요.</p>
@@ -70,22 +139,25 @@
             <div class="row">
                 <div class="field">
                     <label for="name">이름</label>
-                    <input id="name" name="name" type="text" placeholder="이름" required>
+                    <input id="name" name="name" type="text" placeholder="이름" required value="홍길동">
                 </div>
 
                 <div class="field">
                     <label for="email">이메일</label>
-                    <input id="email" name="email" type="email" placeholder="example@mail.com" required>
+                    <input id="email" name="email" type="email" placeholder="example@mail.com" required
+                        value="test@example.com">
                 </div>
 
                 <div class="inline">
                     <div class="field">
                         <label for="username">아이디</label>
-                        <input id="username" name="username" type="text" minlength="4" maxlength="20" placeholder="영문/숫자 4~20자" required>
+                        <input id="username" name="username" type="text" minlength="4" maxlength="20"
+                            placeholder="영문/숫자 4~20자" required value="testuser">
                     </div>
                     <div class="field">
                         <label for="phone">휴대폰 번호</label>
-                        <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="010-1234-5678" pattern="^(010|011|016|017|018|019)-?\d{3,4}-?\d{4}$">
+                        <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="010-1234-5678"
+                            pattern="^(010|011|016|017|018|019)-?\d{3,4}-?\d{4}$" value="010-1234-5678">
                         <div class="hint">형식: 010-1234-5678</div>
                     </div>
                 </div>
@@ -93,11 +165,13 @@
                 <div class="inline">
                     <div class="field">
                         <label for="password">비밀번호</label>
-                        <input id="password" name="password" type="password" minlength="8" placeholder="8자 이상" required>
+                        <input id="password" name="password" type="password" minlength="8" placeholder="8자 이상" required
+                            value="password123">
                     </div>
                     <div class="field">
                         <label for="passwordConfirm">비밀번호 확인</label>
-                        <input id="passwordConfirm" name="passwordConfirm" type="password" minlength="8" placeholder="비밀번호 재입력" required>
+                        <input id="passwordConfirm" name="passwordConfirm" type="password" minlength="8"
+                            placeholder="비밀번호 재입력" required value="password123">
                     </div>
                 </div>
 
@@ -111,10 +185,10 @@
                 <button type="submit" class="btn-primary">가입하기</button>
                 <p class="muted">이미 계정이 있으신가요? <a href="/login">로그인</a></p>
             </div>
-
-            <a href="/" class="back-link">뒤로가기</a>
         </form>
+
+        <a href="/">뒤로가기</a>
     </main>
 </body>
-</html>
 
+</html>

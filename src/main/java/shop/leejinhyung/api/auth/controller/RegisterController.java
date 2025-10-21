@@ -1,70 +1,78 @@
 package shop.leejinhyung.api.auth.controller;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import shop.leejinhyung.api.common.domain.Messenger;
-
+import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import shop.leejinhyung.api.auth.service.RegisterService;
+import shop.leejinhyung.api.common.domain.Messenger;
+import shop.leejinhyung.api.auth.domain.RegisterDTO;
+import lombok.RequiredArgsConstructor;
 
 @Controller
+
+@RequiredArgsConstructor
 public class RegisterController {
-    @GetMapping("/register/csv-demo")
-    @ResponseBody
-    public Messenger readAndPrintFirst5Passengers() {
+
+    private final RegisterService registerService;
+
+    @GetMapping("/register")
+    public Messenger printFirstFivePassengers() {
         try {
             // CSV 파일 경로
             String csvFilePath = "src/main/resources/static/csv/train.csv";
 
             // CSV 파일 읽기
-            Reader reader = new FileReader(csvFilePath);
-            CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader());
+            FileReader reader = new FileReader(csvFilePath);
+            CSVParser parser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader());
 
-            System.out.println("=== 타이타닉 승객 데이터 (처음 5명) ===");
-            System.out.println();
-
+            List<RegisterDTO> registers = new ArrayList<>();
             int count = 0;
-            for (CSVRecord record : csvParser) {
-                if (count >= 5) {
+
+            // 처음 5명의 데이터만 읽기
+            for (CSVRecord record : parser) {
+                if (count >= 5)
                     break;
-                }
 
-                System.out.println("승객 " + (count + 1) + ":");
-                System.out.println("  PassengerId: " + record.get("PassengerId"));
-                System.out.println("  Survived: " + record.get("Survived"));
-                System.out.println("  Pclass: " + record.get("Pclass"));
-                System.out.println("  Name: " + record.get("Name"));
-                System.out.println("  Sex: " + record.get("Sex"));
-                System.out.println("  Age: " + record.get("Age"));
-                System.out.println("  SibSp: " + record.get("SibSp"));
-                System.out.println("  Parch: " + record.get("Parch"));
-                System.out.println("  Ticket: " + record.get("Ticket"));
-                System.out.println("  Fare: " + record.get("Fare"));
-                System.out.println("  Cabin: " + record.get("Cabin"));
-                System.out.println("  Embarked: " + record.get("Embarked"));
-                System.out.println();
+                RegisterDTO register = new RegisterDTO();
+                register.setUserId(record.get("PassengerId"));
+                register.setSurvived(record.get("Survived"));
+                register.setPclass(record.get("Pclass"));
+                register.setName(record.get("Name"));
+                register.setGender(record.get("Sex"));
+                register.setAge(record.get("Age"));
+                register.setSibSp(record.get("SibSp"));
+                register.setParch(record.get("Parch"));
+                register.setTicket(record.get("Ticket"));
+                register.setFare(record.get("Fare"));
+                register.setCabin(record.get("Cabin"));
+                register.setEmbarked(record.get("Embarked"));
 
+                registers.add(register);
                 count++;
             }
 
-            csvParser.close();
+            parser.close();
             reader.close();
 
-        } catch (IOException e) {
-            System.err.println("CSV 파일을 읽는 중 오류가 발생했습니다: " + e.getMessage());
-            e.printStackTrace();
-        }
+            Messenger messenger = new Messenger();
+            return messenger;
 
-        Messenger messenger = new Messenger();
-        messenger.setCode(0);
-        messenger.setMessage("CSV 데이터를 콘솔에 출력했습니다.");
-        return messenger;
+        } catch (IOException e) {
+            Messenger messenger = new Messenger();
+            messenger.setCode(500);
+            messenger.setMessage("CSV 파일을 읽는 중 오류가 발생했습니다: " + e.getMessage());
+            return messenger;
+            
+        }
     }
 
 }

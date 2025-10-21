@@ -1,4 +1,4 @@
-package shop.leejinhyung.api.auth.domain;
+package shop.leejinhyung.api.user.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class RegisterDTO {
+public class UserDTO {
     private String UserId;
     private String Survived;
     private String Pclass;
@@ -21,5 +21,5 @@ public class RegisterDTO {
     private String Fare;
     private String Cabin;
     private String Embarked;
-
-    }
+    
+}

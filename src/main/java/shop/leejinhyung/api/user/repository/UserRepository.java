@@ -42,6 +42,10 @@ public class UserRepository {
         messenger.setCode(200);
         messenger.setMessage("모든 사용자 데이터가 성공적으로 처리되었습니다.");
 
+        // 메시지와 코드도 터미널에 함께 출력
+        System.out.println("메시지: " + messenger.getMessage());
+        System.out.println("코드: " + messenger.getCode());
+
         return messenger;
     }
 }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>사용자 정보</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h2>사용자 데이터 목록</h2>
+
+    <!-- 처리 메시지 표시 -->
+    <p th:text="${message}"></p>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>사용자 ID</th>
+                <th>생존 여부</th>
+                <th>등급</th>
+                <th>이름</th>
+                <th>성별</th>
+                <th>나이</th>
+                <th>형제자매/배우자 수</th>
+                <th>부모/자녀 수</th>
+                <th>티켓 번호</th>
+                <th>요금</th>
+                <th>객실</th>
+                <th>승선항구</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.userId}"></td>
+                <td th:text="${user.survived}"></td>
+                <td th:text="${user.pclass}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.gender}"></td>
+                <td th:text="${user.age}"></td>
+                <td th:text="${user.sibSp}"></td>
+                <td th:text="${user.parch}"></td>
+                <td th:text="${user.ticket}"></td>
+                <td th:text="${user.fare}"></td>
+                <td th:text="${user.cabin}"></td>
+                <td th:text="${user.embarked}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

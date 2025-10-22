@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.ui.Model;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -22,8 +24,8 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/might")
-    public Messenger printFirstFivePassengers() {
+    @GetMapping("/qw")
+    public String printFirstFivePassengers(Model model) {
         try {
             // CSV 파일 경로
             String csvFilePath = "src/main/resources/static/csv/train.csv";
@@ -31,7 +33,7 @@ public class UserController {
             // CSV 파일 읽기
             FileReader reader = new FileReader(csvFilePath);
             CSVParser parser = new CSVParser(reader,
-            CSVFormat.DEFAULT.withFirstRecordAsHeader());
+                    CSVFormat.DEFAULT.withFirstRecordAsHeader());
 
             List<UserDTO> users = new ArrayList<>();
             int count = 0;
@@ -62,14 +64,18 @@ public class UserController {
             parser.close();
             reader.close();
 
-            // UserService를 통해 데이터 처리
-            return userService.processUsers(users);
+            // UserService를 통해 데이터 처리 (터미널 출력용)
+            Messenger result = userService.processUsers(users);
+
+            // 처리 메시지 및 사용자 목록 모델 추가
+            model.addAttribute("message", result.getMessage());
+            model.addAttribute("users", users);
+            return "user/list";
 
         } catch (IOException e) {
-            Messenger messenger = new Messenger();
-            messenger.setCode(500);
-            messenger.setMessage("CSV 파일을 읽는 중 오류가 발생했습니다: " + e.getMessage());
-            return messenger;
+            model.addAttribute("users", new ArrayList<UserDTO>());
+            model.addAttribute("message", "CSV 파일을 읽는 중 오류가 발생했습니다: " + e.getMessage());
+            return "user/list";
 
         }
     }

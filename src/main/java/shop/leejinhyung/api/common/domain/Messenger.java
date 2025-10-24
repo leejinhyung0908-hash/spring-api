@@ -1,5 +1,6 @@
 package shop.leejinhyung.api.common.domain;
 
+
 public class Messenger {
     private int code;
     private String message;

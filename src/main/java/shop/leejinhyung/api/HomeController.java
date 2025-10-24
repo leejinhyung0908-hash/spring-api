@@ -36,4 +36,9 @@ public class HomeController {
         return "weather/list";
     }
 
+    @GetMapping("/products/list")
+    public String productListPage() {
+        return "products/list";
+    }
+
 }

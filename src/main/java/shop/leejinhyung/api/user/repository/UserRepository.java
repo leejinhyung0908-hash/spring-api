@@ -10,14 +10,39 @@ import shop.leejinhyung.api.user.domain.UserDTO;
 @Repository
 public class UserRepository {
 
-    public Messenger processAllUsers(List<UserDTO> users) {
+    public Messenger save(UserDTO userDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    }
+
+    public Messenger update(UserDTO userDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    }
+
+    public Messenger delete(UserDTO userDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    }
+
+    public Messenger findById(UserDTO userDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+    }
+
+    public Messenger findAll(UserDTO userDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+    }
+
+    public Messenger saveAll(List<UserDTO> userList) {
         // 모든 사용자 정보를 한 번에 터미널에 출력
         System.out.println("==========================================");
         System.out.println("           모든 사용자 정보 출력");
         System.out.println("==========================================");
 
-        for (int i = 0; i < users.size(); i++) {
-            UserDTO user = users.get(i);
+        for (int i = 0; i < userList.size(); i++) {
+            UserDTO user = userList.get(i);
             System.out.println("\n--- 사용자 " + (i + 1) + " ---");
             System.out.println("사용자 ID: " + user.getUserId());
             System.out.println("생존 여부: " + user.getSurvived());
@@ -31,6 +56,14 @@ public class UserRepository {
             System.out.println("요금: " + user.getFare());
             System.out.println("객실: " + user.getCabin());
             System.out.println("승선항구: " + user.getEmbarked());
+
+            // 조건식 값 출력
+            System.out.println("--- 조건식 결과 ---");
+            System.out.println("생존 여부가 1인가? " + ("1".equals(user.getSurvived())));
+            System.out.println("등급이 1등급인가? " + ("1".equals(user.getPclass())));
+            System.out.println("성별이 남자인가? " + ("male".equals(user.getGender())));
+            System.out.println("나이가 30세 이상인가? "
+                    + (user.getAge() != null && !user.getAge().isEmpty() && Integer.parseInt(user.getAge()) >= 30));
         }
 
         System.out.println("==========================================");
@@ -41,7 +74,6 @@ public class UserRepository {
         Messenger messenger = new Messenger();
         messenger.setCode(200);
         messenger.setMessage("모든 사용자 데이터가 성공적으로 처리되었습니다.");
-
         // 메시지와 코드도 터미널에 함께 출력
         System.out.println("메시지: " + messenger.getMessage());
         System.out.println("코드: " + messenger.getCode());

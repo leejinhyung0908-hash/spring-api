@@ -1,15 +1,8 @@
-package shop.leejinhyung.api.calculator.controller;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+package shop.leejinhyung.api.calculator.service;
 
 import shop.leejinhyung.api.calculator.domain.CalculatorDTO;
-import shop.leejinhyung.api.calculator.service.CalculatorService;
-import lombok.RequiredArgsConstructor;
 
-public class CalculatorController implements CalculatorService{
+public class CalculatorServiceImplement implements CalculatorService {
 
     @Override
     public int add(CalculatorDTO calculatorDTO) {
@@ -34,5 +27,5 @@ public class CalculatorController implements CalculatorService{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'divide'");
     }
-    
+
 }

@@ -1,22 +1,20 @@
 package shop.leejinhyung.api.user.service;
 
 import java.util.List;
-
-import org.springframework.stereotype.Service;
-
-import lombok.RequiredArgsConstructor;
-import shop.leejinhyung.api.user.repository.UserRepository;
-import shop.leejinhyung.api.user.domain.UserDTO;
 import shop.leejinhyung.api.common.domain.Messenger;
+import shop.leejinhyung.api.user.domain.UserDTO;
 
-@Service
-@RequiredArgsConstructor
-public class UserService {
+public interface UserService {
 
-    private final UserRepository userRepository;
+    Messenger save(UserDTO userDTO);
 
-    public Messenger processUsers(List<UserDTO> users) {
-        // UserRepository를 통해 터미널 출력 처리
-        return userRepository.processAllUsers(users);
-    }
+    Messenger update(UserDTO userDTO);
+
+    Messenger delete(UserDTO userDTO);
+
+    Messenger findById(UserDTO userDTO);
+
+    Messenger findAll(UserDTO userDTO);
+
+    Messenger saveAll(List<UserDTO> userList);
 }

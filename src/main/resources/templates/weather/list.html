@@ -1,38 +1,60 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>날씨 정보</title>
     <meta charset="UTF-8">
 </head>
-<body>
-<h2>날씨 데이터 목록</h2>
 
-<table border="1">
-    <thead>
-    <tr>
-        <th>일시</th>
-        <th>평균기온(℃)</th>
-        <th>최고기온(℃)</th>
-        <th>최고기온시각</th>
-        <th>최저기온(℃)</th>
-        <th>최저기온시각</th>
-        <th>일교차</th>
-        <th>강수량(mm)</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="weather : ${weatherList}">
-        <td th:text="${weather.date}"></td>
-        <td th:text="${weather.avgTemp}"></td>
-        <td th:text="${weather.maxTemp}"></td>
-        <td th:text="${weather.maxTempTime}"></td>
-        <td th:text="${weather.minTemp}"></td>
-        <td th:text="${weather.minTempTime}"></td>
-        <td th:text="${weather.tempRange}"></td>
-        <td th:text="${weather.precipitation}"></td>
-    </tr>
-    </tbody>
-</table>
+<body>
+    <h2>날씨 데이터 목록</h2>
+
+    <!-- 홈으로 돌아가기 버튼 -->
+    <div style="margin-bottom: 20px;">
+        <a href="/"
+            style="background-color: #2196F3; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; text-decoration: none; display: inline-block;">
+            🏠 홈으로 돌아가기
+        </a>
+    </div>
+
+    <!-- 파일 업로드 버튼 -->
+    <form action="/weathers/all" method="post" style="margin-bottom: 20px;">
+        <button type="submit"
+            style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+            🌤️ CSV 파일에서 날씨 데이터 로드
+        </button>
+    </form>
+
+    <!-- 처리 메시지 표시 -->
+    <p th:text="${message}" style="color: #333; font-weight: bold; margin: 10px 0;"></p>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>일시</th>
+                <th>평균기온(℃)</th>
+                <th>최고기온(℃)</th>
+                <th>최고기온시각</th>
+                <th>최저기온(℃)</th>
+                <th>최저기온시각</th>
+                <th>일교차</th>
+                <th>강수량(mm)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="weather : ${weatherList}">
+                <td th:text="${weather.date}"></td>
+                <td th:text="${weather.avgTemp}"></td>
+                <td th:text="${weather.maxTemp}"></td>
+                <td th:text="${weather.maxTempTime}"></td>
+                <td th:text="${weather.minTemp}"></td>
+                <td th:text="${weather.minTempTime}"></td>
+                <td th:text="${weather.tempRange}"></td>
+                <td th:text="${weather.precipitation}"></td>
+            </tr>
+        </tbody>
+    </table>
 
 </body>
+
 </html>
